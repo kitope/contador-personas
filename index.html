@@ -25,8 +25,9 @@
         })
         .done(function( response ) {
             $('#load-msg').hide()
-            $('#rows').text(JSON.stringify(response, null, 2))
-            var myBarChart = new Chart($('myChart'), {
+            // $('#rows').text(JSON.stringify(response, null, 2))
+            var ctx = document.getElementById('myChart').getContext('2d')
+            var myBarChart = new Chart(ctx, {
                 type: 'bar',
                 data: [1,2,213,432,123,44]
                 // options: options
