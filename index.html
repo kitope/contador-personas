@@ -12,8 +12,10 @@
     <title>Contador</title>
 </head>
 <script>
-    $(function(){
-        $('#test').text('test')
+    jq2 = jQuery.noConflict();
+    jq2(function( $ ) {
+    // Code using $ as usual goes here; the actual jQuery object is jq2
+    $('#test').text('test')
         $.ajax({
             method: "GET",
             url: "/api/registros"
@@ -21,7 +23,8 @@
         .done(function( response ) {
             $('#rows').text(response)
         });
-    })
+    });
+
 </script>
 <body>
     <div class="container-fluid">
