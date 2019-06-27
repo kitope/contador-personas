@@ -21,7 +21,7 @@
             url: "/api/registros"
         })
         .done(function( response ) {
-            $('#rows').text(response)
+            $('#rows').text(JSON.stringify(response, null, 2))
         });
     });
 
