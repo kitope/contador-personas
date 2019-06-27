@@ -16,7 +16,7 @@ app.get('/registros-camaras', function (req, res) {
 
     connection.query('SELECT * FROM cont', function(err, rows, fields) {
         if (err) throw err;
-        console.log('The solution is: ', rows);
+        console.log('database contador  is: ', rows[0]);
         res.sendFile(path.join(__dirname+'/index.html'));
     });
 
