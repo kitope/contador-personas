@@ -3,7 +3,7 @@ var app = express();
 
 app.get('/registros-camaras', function (req, res) {
 
-  res.send('Hello World!');
+  res.send('Contador de personas!');
 });
 
 app.listen(80, function () {
