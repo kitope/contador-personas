@@ -12,7 +12,7 @@
     <title>Contador</title>
 </head>
 <script>
-    jq2 = jQuery.noConflict();
+    jq2 = jQuery.noConflict()
     jq2(function( $ ) {
     // Code using $ as usual goes here; the actual jQuery object is jq2
 
@@ -24,8 +24,13 @@
         .done(function( response ) {
             $('#load-msg').hide()
             $('#rows').text(JSON.stringify(response, null, 2))
-        });
-    });
+            var myBarChart = new Chart($('myChart'), {
+                type: 'bar',
+                data: [1,2,213,432,123,44]
+                // options: options
+            })
+        })
+    })
 
 </script>
 <body>
@@ -41,7 +46,9 @@
                       </div>
         </div>
         <div class="row">
-            <pre id="rows"></pre>
+            <div class="col-12">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
         </div>
     </div>
     
