@@ -12,14 +12,16 @@ var connection = mysql.createConnection({
 
 
 app.get('/registros-camaras', function (req, res) {
-    connection.connect();
+    res.sendFile(path.join(__dirname+'/index.html'));
+});
 
+app.get('/api/registros', function (req, res) {
+    connection.connect();
     connection.query('SELECT * FROM cont', function(err, rows, fields) {
         if (err) throw err;
         console.log('database contador  is: ', rows[0]);
-        res.sendFile(path.join(__dirname+'/index.html'));
+        res.send(rows)
     });
-
     connection.end();
 });
 
