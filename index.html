@@ -26,13 +26,24 @@
         .done(function( response ) {
             $('#load-msg').hide()
             // $('#rows').text(JSON.stringify(response, null, 2))
-            for(let obj of response){
-                console.log(obj)
+            let data = {entrada:{}, salida:{}}
+            for(let obj of json){
+                let d = new Date('2019-06-27T02:35:58.000Z')
+                let date = `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`
+                if(obj.entrada) {
+                    if(!(date in data['entrada'])) data['entrada'][date] = []
+                    data['entrada'][date].push(data['entrada'][date] + obj.entrada)
+                }
+                if(obj.salida) {
+                    if(!(date in data['salida'])) data['salida'][date] = []
+                    data['salida'][date].push(data['salida'][date] + obj.salida)
+                } 
             }
-            var ctx = document.getElementById('myChart').getContext('2d')
-            var myBarChart = new Chart(ctx, {
+            let ctx = document.getElementById('myChart').getContext('2d')
+            let myBarChart = new Chart(ctx, {
                 type: 'bar',
-                data: [{x:'2016-12-25', y:20}, {x:'2016-12-26', y:10}]
+                // data: [{x:'2016-12-25', y:20}, {x:'2016-12-26', y:10}]
+                data: data
                 // options: options
             })
         }).fail(function(err, textStatus){
