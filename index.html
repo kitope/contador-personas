@@ -39,6 +39,7 @@
                     data['salida'][date].push(data['salida'][date] + obj.salida)
                 } 
             }
+            console.log(data)
             let ctx = document.getElementById('myChart').getContext('2d')
             let myBarChart = new Chart(ctx, {
                 type: 'bar',
