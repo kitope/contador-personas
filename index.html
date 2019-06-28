@@ -43,9 +43,17 @@
             let ctx = document.getElementById('myChart')
             let myBarChart = new Chart(ctx, {
                 type: 'bar',
-                data: [{x:'2016-12-25', y:20}, {x:'2016-12-26', y:10}]
-                // data: [data]
-                // options: options
+                data: [{x:'2016-12-25', y:20}, {x:'2016-12-26', y:10}],
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: true
+                        }],
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                }
             })
         }).fail(function(err, textStatus){
             console.log('error: ', {err, text: textStatus})
