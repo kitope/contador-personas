@@ -26,12 +26,17 @@
         .done(function( response ) {
             $('#load-msg').hide()
             // $('#rows').text(JSON.stringify(response, null, 2))
+            for(let obj of response){
+                console.log(obj)
+            }
             var ctx = document.getElementById('myChart').getContext('2d')
             var myBarChart = new Chart(ctx, {
                 type: 'bar',
                 data: [{x:'2016-12-25', y:20}, {x:'2016-12-26', y:10}]
                 // options: options
             })
+        }).fail(function(err, textStatus){
+            console.log('error: ', {err, text: textStatus})
         })
     })
 
