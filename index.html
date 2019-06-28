@@ -54,7 +54,7 @@
             }
             data.labels = Object.keys(data.datasets)
             console.log(data)
-            let ctx = document.getElementById('myChart')
+            let ctx = document.getElementById('myChart').getContext("2d")
             let myBarChart = new Chart(ctx, {
                 type: 'bar',
                 data: data,
