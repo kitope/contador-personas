@@ -33,21 +33,21 @@
                 let date = `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`
                 if(obj.entrada) {
                     if(!(date in data.datasets)) {
-                        data.datasets = {
+                        data.datasets.push({
                             label: "Entrada",
                             backgroundColor: "green",
                             data: []
-                        }
+                        })
                     }
                     data.datasets.data = input++
                 }
                 if(obj.salida) {
                     if(!(date in data.datasets)) {
-                        data.datasets = {
+                        data.datasets.push({
                             label: "Salida",
                             backgroundColor: "red",
                             data: []
-                        }
+                        })
                     }
                     data.datasets.data = output++
                 }
