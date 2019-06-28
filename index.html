@@ -58,6 +58,63 @@
         }).fail(function(err, textStatus){
             console.log('error: ', {err, text: textStatus})
         })
+
+        var data = {
+    labels: ["Chocolate", "Vanilla", "Strawberry"],
+    datasets: [
+        {
+            label: "Harpo",
+            backgroundColor: "blue",
+            data: [3,7,4]
+        },
+        {
+            label: "Chico",
+            backgroundColor: "red",
+            data: [4,3,5]
+        },
+        {
+            label: "Groucho",
+            backgroundColor: "green",
+            data: [7,2,6]
+        }
+    ]
+};
+
+let data = {
+    labels: ["Chocolate", "Vanilla", "Strawberry"],
+    datasets: [
+        {
+            label: "Harpo",
+            backgroundColor: "blue",
+            data: [3,7,4]
+        },
+        {
+            label: "Chico",
+            backgroundColor: "red",
+            data: [4,3,5]
+        },
+        {
+            label: "Groucho",
+            backgroundColor: "green",
+            data: [7,2,6]
+        }
+    ]
+};
+let ctx = document.getElementById("myChart2").getContext("2d");
+var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+        barValueSpacing: 20,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                }
+            }]
+        }
+    }
+});
     })
 
 </script>
@@ -78,6 +135,12 @@
                 <canvas id="myChart" width="400" height="400"></canvas>
             </div>
         </div>
+        <hr>
+        <div class="row">
+                <div class="col-12">
+                    <canvas id="myChart2" width="400" height="400"></canvas>
+                </div>
+            </div>
     </div>
     
     
