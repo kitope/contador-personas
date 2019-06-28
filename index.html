@@ -27,7 +27,7 @@
             $('#load-msg').hide()
             // $('#rows').text(JSON.stringify(response, null, 2))
             let data = {entrada:{}, salida:{}}
-            for(let obj of json){
+            for(let obj of response){
                 let d = new Date('2019-06-27T02:35:58.000Z')
                 let date = `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`
                 if(obj.entrada) {
