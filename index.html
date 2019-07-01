@@ -19,6 +19,7 @@
     // Code using $ as usual goes here; the actual jQuery object is jq2
 
     $('#load-msg').show()
+    $('#load-msg2').hide()
         $.ajax({
             method: "GET",
             url: "/api/registros"
@@ -74,52 +75,10 @@
             }
             })
         }).fail(function(err, textStatus){
+            $('#load-msg2').show()
             console.log('error: ', {err, text: textStatus})
         })
 
-
-var goals = [12, 19, 3]
-var predictions = [8, 11, 1]
-
-var ctx = document.getElementById("myChart2");
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["Red", "Blue", "Yellow"],
-            datasets: [{
-                            label: '# of Goals',
-                            fillColor: "rgba(220,220,220,0.5)",
-                            backgroundColor: "rgba(46, 44, 211, 0.7)",
-                            highlightFill: "rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
-                            data: goals
-                        },
-                        {
-                            label: '# of predicted Goals',
-                            fillColor: "rgba(0,0,0,0.5)",
-                            backgroundColor: "rgba(215, 44, 44, 0.7)",
-                            highlightFill: "rgba(0,0,0,0.5)",
-                            highlightStroke: "rgba(0,0,0,0.5)",
-                            data: predictions
-                        }
-                    ]
-        },
-        options: {
-        		
-            responsive: false,
-            scales: {
-            		xAxes: [{
-                  stacked: true,
-                }],
-                yAxes: [{
-                 	stacked: true,
-                  ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-    });
     })
 
 </script>
@@ -134,6 +93,9 @@ var ctx = document.getElementById("myChart2");
                 <div class="alert alert-primary" style="display: none" role="alert" id="load-msg">
                         Cargando datos desde la base de datos...
                       </div>
+                      <div class="alert alert-danger" style="display: none" role="alert" id="load-msg2">
+                            Error al obtener los datos desde la Base de datos. Vuelva a intentarlo
+                          </div>
         </div>
         <div class="row">
             <div class="col-12">
