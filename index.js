@@ -17,7 +17,7 @@ app.get('/registros-camaras', function (req, res) {
 
 app.get('/api/registros', function (req, res) {
     connection.connect();
-    connection.query('SELECT DATE(fecha), SUM(entrada), SUM(salida) FROM cont group by DATE(fecha)', function(err, rows, fields) {
+    connection.query('SELECT DATE(fecha) AS fecha, SUM(entrada) AS inputs, SUM(salida) AS outputs FROM cont group by DATE(fecha)', function(err, rows, fields) {
         if (err) throw err
         res.send(rows)
     });
