@@ -29,11 +29,12 @@
 
             let data = {labels:[], datasets: []}, inputs, outputs
 
-            for (let data of response){
-                data.labels.push(data.fecha)
-                inputs.push(data.inputs)
-                outputs.push(data.outputs)
+            for (let res of response){
+                data.labels.push(res.fecha)
+                inputs.push(res.inputs)
+                outputs.push(res.outputs)
             }
+            
             data.datasets = [{
                 label: 'Entrada',
                 fillColor: "rgba(220,220,220,0.5)",
