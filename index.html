@@ -28,7 +28,7 @@
         $('#load-msg').hide()
         // $('#rows').text(JSON.stringify(response, null, 2))
 
-        let data = {labels:[], datasets: []}, inputs, outputs
+        let data = {labels:[], datasets: []}, inputs = [], outputs = []
 
         for (let res of response){
             data.labels.push(res.fecha)
