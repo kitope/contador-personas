@@ -20,23 +20,23 @@
 
     $('#load-msg').show()
     $('#load-msg2').hide()
-        $.ajax({
-            method: "GET",
-            url: "/api/registros"
-        })
-        .done(function( response ) {
-            $('#load-msg').hide()
-            // $('#rows').text(JSON.stringify(response, null, 2))
+    $.ajax({
+        method: "GET",
+        url: "/api/registros"
+    })
+    .done(function( response ) {
+        $('#load-msg').hide()
+        // $('#rows').text(JSON.stringify(response, null, 2))
 
-            let data = {labels:[], datasets: []}, inputs, outputs
+        let data = {labels:[], datasets: []}, inputs, outputs
 
-            for (let res of response){
-                data.labels.push(res.fecha)
-                inputs.push(res.inputs)
-                outputs.push(res.outputs)
-            }
-            
-            data.datasets = [{
+        for (let res of response){
+            data.labels.push(res.fecha)
+            inputs.push(res.inputs)
+            outputs.push(res.outputs)
+        }
+        
+        data.datasets = [{
                 label: 'Entrada',
                 fillColor: "rgba(220,220,220,0.5)",
                 backgroundColor: "rgba(46, 44, 211, 0.7)",
@@ -53,34 +53,33 @@
                 data: outputs
             }
         ]
-            console.log(data)
-            let ctx = document.getElementById('myChart')
-            let myBarChart = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: {
-        		
-                responsive: false,
+        console.log(data)
+        let ctx = document.getElementById('myChart')
+        let myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
                 scales: {
                         xAxes: [{
-                      stacked: true,
+                    stacked: true,
                     }],
                     yAxes: [{
-                         stacked: true,
-                      ticks: {
+                        stacked: true,
+                    ticks: {
                             beginAtZero:true
                         }
                     }]
                 }
             }
-            })
-        }).fail(function(err, textStatus){
-            $('#load-msg').hide()
-            $('#load-msg2').show()
-            console.log('error: ', {err, text: textStatus})
         })
-
+    }).fail(function(err, textStatus){
+        $('#load-msg').hide()
+        $('#load-msg2').show()
+        console.log('error: ', {err, text: textStatus})
     })
+
+})
 
 </script>
 <body>
