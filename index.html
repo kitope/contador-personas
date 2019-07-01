@@ -75,6 +75,7 @@
             }
             })
         }).fail(function(err, textStatus){
+            $('#load-msg').hide()
             $('#load-msg2').show()
             console.log('error: ', {err, text: textStatus})
         })
